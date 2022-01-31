@@ -1,4 +1,7 @@
 package monprojet.entity;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.Proxy;
@@ -22,4 +25,10 @@ public class Country {
     @Column(unique=true)
     @NonNull
     private String name;
+
+    @OneToMany(mappedBy = "country")//si on enlève mappedBy --> table de jointure
+    @ToString.Exclude   //récursivité avec le toString de lombok et ça fait tout planter
+    private List<City> cities = new ArrayList<>();
+
+    
 }
