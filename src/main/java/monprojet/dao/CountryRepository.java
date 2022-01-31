@@ -12,13 +12,7 @@ import monprojet.entity.Country;
 //
 
 public interface CountryRepository extends JpaRepository<Country, Integer> {
-    /*
-    @Query(value=
-        "SELECT SUM(city.population) FROM"
-    +   "city INNER JOIN country ON city.country_id = country.id"
-    +   "WHERE country.id = :id_pays"
-    ,nativeQuery=true)
-    */
+   
     @Query(
         value=
         "SELECT SUM(city.population) "+
@@ -38,6 +32,6 @@ public interface CountryRepository extends JpaRepository<Country, Integer> {
     )
     public List<PopulationParPays> populationParPays();
 
-    
+
 }
 
